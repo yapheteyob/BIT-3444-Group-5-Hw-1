@@ -1,0 +1,96 @@
+Public Class frmBusUpdater
+
+    Dim route1 'not sure if this is where #3. is supposed to go to initialized the first form?? - SJ IM NOT DONE WITH THIS- I HAVE SCREENSHOTS OF WHAT I TINK ITS SUPPOSED TO LOOK LIKE THO
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub frmBusUpdater_Load(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim RouteR As String
+        Dim BusR As String
+        'retrieve route selected by user'
+        ListBox1.SelectedItem = RouteR
+        'retrieve bus selected by user'
+        ComboBox1.SelectedItem = BusR
+        'add combination'
+        Dim busAssignmentList As New List(Of String) From {RouteR, BusR}
+
+
+    End Sub
+
+    Dim namesofbusesArray() As String = {"Bus#1", "Bus#2", "Bus#3", "Bus#4", "Bus#5", "Bus#6", "Bus#7", "Bus#8", "Bus#9", "Bus#10", "Bus#11", "Bus#12", "Bus#13", "Bus#14"}
+
+    Dim namesofroutesArray() As String = {"Harding Avenue", "Hethwood A", "Hethwood B", "Main Street North", "Main Street South", "Patrick Henry Drive", "South Main –Airport", "Toms Creek", "University City Blvd", "Terminal"}
+
+    'list of string arrays for bus assaingments. THIS NEEDS DOUBLE CHECKING> I THINK I DID SOMETHING WRONG HERE
+    'Dim busassignmentlist As New List(Of String) From {{"Bus#1", "Bus#2", "Bus#3", "Bus#4", "Bus#5", "Bus#6", "Bus#7", "Bus#8", "Bus#9", "Bus#10", "Bus#11", "Bus#12", "Bus#13", "Bus#14"}, {"Harding Avenue", "Hethwood A", "Hethwood B", "Main Street North", "Main Street South", "Patrick Henry Drive", "South Main –Airport", "Toms Creek", "University City Blvd", "Terminal"}}
+    'Dim busArray() As String = {{"Bus#1", "Bus#2", "Bus#3", "Bus#4", "Bus#5", "Bus#6", "Bus#7", "Bus#8", "Bus#9", "Bus#10", "Bus#11", "Bus#12", "Bus#13", "Bus#14"}, {"Harding Avenue", "Hethwood A", "Hethwood B", "Main Street North", "Main Street South", "Patrick Henry Drive", "South Main –Airport", "Toms Creek", "University City Blvd", "Terminal"}}
+    Dim busArray(,) = {{"Bus#1", "Harding Avenue"}, {"Bus#2", "Hethwood A"}, {"Bus#3", "Hethwood B"}, {"Bus#4", "Main Street North"}, {"Bus#5", "Main Street South"}, {"Bus#6", "Patrick Henry Drive"}, {"Bus#7", "South Main –Airport"}, {"Bus#8", "Toms Creek"}, {"Bus#9", "University City Blvd"}, {"Bus#10", "Terminal"}}
+
+    'This is the two dimensioanl array for the number of buses and the demand for each route.
+
+    Dim demandBusArray(,) = {{"0", "500"}, {"0", "1000"}, {"0", "800"}, {"0", "400"}, {"0", "1200"}, {"0", "300"}, {"0", "900"}, {"0", "1000"}, {"0", "900"}, {"0", ""}}
+
+    'Demand forcast ARRAY
+    Dim demandArray() As String = {"500", "1000", "800", "400", "1200", "300", "900", "1000", "900", ""}
+
+    'need a subroutine that loads First Form and initializes the entries in the route array with the names of the routes - SJ
+
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'this button will calculate the difference between the capacity of the bus service on each route
+        If ListBox1.SelectedItem = "Harding Avenue" Then demandBusArray(0, 0) += 1
+        If ListBox1.SelectedItem = "Hethwood A" Then demandBusArray(1, 0) += 1
+        If ListBox1.SelectedItem = "Hethwood B" Then demandBusArray(2, 0) += 1
+        If ListBox1.SelectedItem = "Main Street North" Then demandBusArray(3, 0) += 1
+        If ListBox1.SelectedItem = "Main Street South" Then demandBusArray(4, 0) += 1
+        If ListBox1.SelectedItem = "Patrick Henry Drive" Then demandBusArray(5, 0) += 1
+        If ListBox1.SelectedItem = "South Main -Airport" Then demandBusArray(6, 0) += 1
+        If ListBox1.SelectedItem = "Toms Creek" Then demandBusArray(7, 0) += 1
+        If ListBox1.SelectedItem = "University City Blvd" Then demandBusArray(8, 0) += 1
+        If ListBox1.SelectedItem = "Terminal" Then demandBusArray(9, 0) += 1
+
+        'and the demand for bus service on the route
+        'Dim someDateAndTime As Date = TextBox4.Text
+        'this event handler opens the second Form (creates the TableLayoutPanel) - SJ
+        Form2.Show
+
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim DemandUpdate As Integer
+        TextBox1.Text = DemandUpdate
+        Try
+            Throw New Exception("Please enter an entry in the textbox")
+            If ListBox1.SelectedItem = "Harding Avenue" Then demandArray(0) = DemandUpdate
+            If ListBox1.SelectedItem = "Hethwood A" Then demandArray(1) = DemandUpdate
+            If ListBox1.SelectedItem = "Hethwood B" Then demandArray(2) = DemandUpdate
+            If ListBox1.SelectedItem = "Main Street North" Then demandArray(3) = DemandUpdate
+            If ListBox1.SelectedItem = "Main Street South" Then demandArray(4) = DemandUpdate
+            If ListBox1.SelectedItem = "Patrick Henry Drive" Then demandArray(5) = DemandUpdate
+            If ListBox1.SelectedItem = "South Main -Airport" Then demandArray(6) = DemandUpdate
+            If ListBox1.SelectedItem = "Toms Creek" Then demandArray(7) = DemandUpdate
+            If ListBox1.SelectedItem = "University City Blvd" Then demandArray(8) = DemandUpdate
+            If ListBox1.SelectedItem = "Terminal" Then demandArray(9) = DemandUpdate
+            If Not IsNumeric(ListBox1.SelectedItem) Then
+                Throw New FormatException
+                MsgBox("Filler")
+            End If
+        Catch
+        End Try
+    End Sub
+End Class
