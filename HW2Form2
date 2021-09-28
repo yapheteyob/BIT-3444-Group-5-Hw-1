@@ -1,0 +1,108 @@
+Public Class Form2
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim routeTable As New TableLayoutPanel
+        Dim firstColumnWidth As Short = 100
+        Me.Controls.Add(routeTable)
+        routeTable.RowCount = 10
+        'routeTable.RowCount = frmBusUpdater.ListBox1.Count
+        routeTable.Enabled = True
+        routeTable.ColumnCount = 4
+        routeTable.Height = routeTable.RowCount * 24 - 5
+        routeTable.Width = firstColumnWidth + 60 * routeTable.RowCount + 5
+        'Formatting and setting up TableLayoutPanel and rows/columns
+
+        Dim tablePoint As New Point
+        tablePoint.X = 50
+        tablePoint.Y = 50
+        routeTable.Location = tablePoint
+
+        routeTable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        routeTable.Enabled = True
+        routeTable.Visible = True
+        routeTable.BackColor = Color.Yellow
+
+        Dim myStyle As New ColumnStyle
+        myStyle.SizeType = SizeType.Absolute
+        myStyle.Width = 100
+        routeTable.ColumnStyles.Add(myStyle)
+
+        For columnNumber As Integer = 2 To routeTable.ColumnCount
+            Dim myColumnStyle As New ColumnStyle
+            myColumnStyle.SizeType = SizeType.Absolute
+            myColumnStyle.Width = 60
+            routeTable.ColumnStyles.Add(myColumnStyle)
+        Next
+
+        For rowNumber As Integer = 1 To routeTable.RowCount
+            Dim myRowStyle As New RowStyle
+            myRowStyle.SizeType = SizeType.Percent
+            myRowStyle.Height = 100 / routeTable.RowCount
+            routeTable.RowStyles.Add(myRowStyle)
+        Next
+
+        For columnIndex As Integer = 1 To routeTable.ColumnCount - 1
+            Dim lblRoute As New Label
+            routeTable.Controls.Add(lblRoute)
+            lblRoute.Font = New Font("Arial", 1, FontStyle.Bold)
+            lblRoute.Text = CStr(4) - 1
+            lblRoute.Width = 50
+            lblRoute.ForeColor = Color.White
+            lblRoute.Anchor = AnchorStyles.Bottom
+            lblRoute.Anchor = AnchorStyles.Top
+            lblRoute.Anchor = AnchorStyles.Left
+            lblRoute.Anchor = AnchorStyles.Right
+            lblRoute.TextAlign = ContentAlignment.MiddleCenter
+            routeTable.SetRow(lblRoute, 0)
+            routeTable.SetColumn(lblRoute, columnIndex)
+        Next
+
+        For columnIndex As Integer = 1 To routeTable.ColumnCount - 1
+            Dim lblNumber As New Label
+            routeTable.Controls.Add(lblNumber)
+            lblNumber.Font = New Font("Arial", 1, FontStyle.Bold)
+            lblNumber.Text = CStr(4) - 1
+            lblNumber.Width = 50
+            lblNumber.ForeColor = Color.White
+            lblNumber.Anchor = AnchorStyles.Bottom
+            lblNumber.Anchor = AnchorStyles.Top
+            lblNumber.Anchor = AnchorStyles.Left
+            lblNumber.Anchor = AnchorStyles.Right
+            lblNumber.TextAlign = ContentAlignment.MiddleCenter
+            routeTable.SetRow(lblNumber, 0)
+            routeTable.SetColumn(lblNumber, columnIndex)
+        Next
+
+        For columnIndex As Integer = 1 To routeTable.ColumnCount - 1
+            Dim lblDemand As New Label
+            routeTable.Controls.Add(lblDemand)
+            lblDemand.Font = New Font("Arial", 1, FontStyle.Bold)
+            lblDemand.Text = CStr(4) - 1
+            lblDemand.Width = 50
+            lblDemand.ForeColor = Color.White
+            lblDemand.Anchor = AnchorStyles.Bottom
+            lblDemand.Anchor = AnchorStyles.Top
+            lblDemand.Anchor = AnchorStyles.Left
+            lblDemand.Anchor = AnchorStyles.Right
+            lblDemand.TextAlign = ContentAlignment.MiddleCenter
+            routeTable.SetRow(lblDemand, 0)
+            routeTable.SetColumn(lblDemand, columnIndex)
+        Next
+
+        For columnIndex As Integer = 1 To routeTable.ColumnCount - 1
+            Dim lblSurplus As New Label
+            routeTable.Controls.Add(lblSurplus)
+            lblSurplus.Font = New Font("Arial", 1, FontStyle.Bold)
+            lblSurplus.Text = CStr(4) - 1
+            lblSurplus.Width = 50
+            lblSurplus.ForeColor = Color.White
+            lblSurplus.Anchor = AnchorStyles.Bottom
+            lblSurplus.Anchor = AnchorStyles.Top
+            lblSurplus.Anchor = AnchorStyles.Left
+            lblSurplus.Anchor = AnchorStyles.Right
+            lblSurplus.TextAlign = ContentAlignment.MiddleCenter
+            routeTable.SetRow(lblSurplus, 0)
+            routeTable.SetColumn(lblSurplus, columnIndex)
+        Next
+
+    End Sub
+End Class
